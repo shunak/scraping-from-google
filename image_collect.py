@@ -14,7 +14,7 @@ class Google:
             {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0'})
 
     def search(self, keyword, maximum):
-        print('begin searching', keyword)
+        print('start searching...', keyword)
         query = self.query_gen(keyword)
         return self.image_search(query, maximum)
 
@@ -61,14 +61,14 @@ def main():
     google = Google()
     if len(sys.argv) != 3:
         print('invalid argment')
-        print('> ./image_collector_cui.py [target name] [download number]')
+        print('> ./image_collect.py [target name] [download number]')
         sys.exit()
     else:
         # save location
         name = sys.argv[1]
-        data_dir = 'data/'
+        data_dir = 'images/'
         os.makedirs(data_dir, exist_ok=True)
-        os.makedirs('data/' + name, exist_ok=True)
+        os.makedirs(data_dir + name, exist_ok=True)
 
         # search image
         result = google.search(
